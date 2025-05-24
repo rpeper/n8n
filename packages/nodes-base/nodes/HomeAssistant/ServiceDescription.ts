@@ -143,4 +143,17 @@ export const serviceFields: INodeProperties[] = [
 			},
 		],
 	},
+	{
+		displayName: 'Return Response',
+		name: 'returnResponse',
+		type: 'boolean',
+		default: false,
+		description: 'Whether to request responses',
+		displayOptions: {
+			show: {
+				resource: ['service'],
+				operation: ['call'],
+			},
+		},
+	},
 ];

@@ -210,6 +210,11 @@ export class HomeAssistant implements INodeType {
 							attributes: IDataObject[];
 						};
 
+						const returnResponse = this.getNodeParameter('returnResponse', i) as boolean;
+						if (returnResponse) {
+							qs.return_response = true;
+						}
+
 						const body: IDataObject = {};
 
 						if (Object.entries(serviceAttributes).length) {
@@ -225,6 +230,7 @@ export class HomeAssistant implements INodeType {
 							'POST',
 							`/services/${domain}/${service}`,
 							body,
+							qs,
 						);
 						if (Array.isArray(responseData) && responseData.length === 0) {
 							responseData = {};
